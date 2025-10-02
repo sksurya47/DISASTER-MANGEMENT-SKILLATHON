@@ -1,0 +1,60 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.floodalert.app">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_BACKGROUND_LOCATION" />
+    <uses-permission android:name="android.permission.WAKE_LOCK"/>
+    <uses-permission android:name="android.permission.FOREGROUND_SERVICE"/>
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.ProductBillingApp">
+
+        <activity android:name=".UI.splash.SplashActivity"
+            android:theme="@style/Theme.ProductBillingApp">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".UI.intro.PcpIntroActivity" />
+        <activity android:name=".UI.weather.PcpCheckWeatherActivity" />
+        <activity android:name=".UI.home.PcpHomeActivity" />
+        <activity android:name=".UI.settings.PcpSettingsActivity" />
+        <activity android:name=".UI.precaution.PcpPrecautionActivity" />
+        <activity android:name=".UI.nearbyPlaces.PcpNearByPlacesActivity" />
+        <activity android:name=".UI.nearbyPlaces.PcpPlacesAddActivity" />
+
+        <service android:name=".fcm.SkFirebaseMessagingService"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.google.firebase.INSTANCE_ID_EVENT"/>
+                <action android:name="com.google.firebase.MESSAGING_EVENT" />
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_channel_id"
+            android:value="my_channel_01" />
+
+        <meta-data
+            android:name="com.google.android.geo.API_KEY"
+            android:value="AIzaSyCF6XNEnkkR-GFRCMFShRfiDCK8Kn5Xj_o"/>
+
+        <service
+            android:name=".UI.alertNotification.PcpCountdownService"
+            android:exported="false" />
+
+    </application>
+
+</manifest>
